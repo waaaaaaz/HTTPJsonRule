@@ -1,0 +1,6 @@
+flask
+flask_restful
+flask-cors
+jinja2
+jsonschema
+requests
