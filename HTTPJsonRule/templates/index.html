@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>HTTPJsonRule</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
 
+<link href="static/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="static/css/debug.css" rel="stylesheet">
+
+</head>
+<body>
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a> <a class="brand" href="#">HTTPJsonRule</a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li><a target="_blank" href=""></a></li>
+						<li><a target="_blank" href=""></a></li>
+						<li><a target="_blank" href=""></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row show-grid">
+			<div id="leftcolumn" class="span6">
+				<form id="paramform" class="well" target="outputframe">
+					<fieldset>
+						<legend>HTTP request options</legend>
+						    <p class="help-block">Only supports 'application/json' as post 'Content-Type'</p>
+						<div class="row show-grid">
+							<div class="span1">
+								<div class="control-group">
+									<label class="control-label" for="httpmethod">Method</label>
+									<div class="controls">
+										<select class="input-small" id="httpmethod">
+											<option>GET</option>
+											<option>POST</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="span4">
+								<div class="control-group">
+									<label class="control-label" for="urlvalue">URL</label>
+									<div class="controls">
+										<input type="text" class="input-xlarge" id="urlvalue"
+											value="http://www.omdbapi.com/?y=&plot=short&r=json&s=silicon">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row show-grid">
+							<div class="span4">
+								<div class="control-group">
+									<label class="control-label" for="urlvalue">Json</label>
+									<div class="controls">
+										<textarea type="text" id="jsonvalue"></textarea>
+									</div>
+								</div>
+							</div>
+						<div class="row show-grid">
+							<div class="span4">
+							    <div style="float:left;padding-right:20px;padding-left:30px;">
+							        <button id="submitajaxrequest" class="btn btn-inverse btn-large">
+								        <i class="icon-download-alt icon-white"></i>Request
+							        </button>
+							<img src="static/img/spinner.gif" id="ajaxspinner" />
+						</div>
+						<div style="float:left;padding-left:20px;">
+							<button id="submitajaxsave" class="btn btn-inverse btn-large">
+								<i class="icon-download-alt icon-white"></i>Save
+							</button>
+							<img src="static/img/spinner.gif" id="ajaxspinner" />
+						</div>
+					    </div>
+					</fieldset>
+				</form>
+				<div id="errordiv"></div>        
+			</div>
+			<div class="span6">
+				<div id="ajaxoutput">
+					<pre id="statuspre">&nbsp</pre>
+					<pre class="pre-scrollable prettyprint linenums" id="outputpre"></pre>
+					<pre class="pre-scrollable prettyprint linenums" id="headerpre"></pre>
+				</div>
+			</div>
+		</div>
+		<br>
+	</div>
+	<script src="static/js/jquery-1.10.2.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+	<script src="static/js/debug.js"></script>  
+</body>
+</html>
