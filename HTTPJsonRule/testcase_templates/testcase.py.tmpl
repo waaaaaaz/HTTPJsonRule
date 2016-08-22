@@ -1,1 +1,63 @@
+# coding: utf-8
+
+import requests
+import unittest
+import json
+from jsonschema import validate
+
+
+url = "{{ resquest_url }}"
+req_json = {{ request_json if request_json else None}}
+
+class HTTPTest(unittest.TestCase):
+
+	'''
+	{{ description if description else "description for test case" }}
+	'''
+
+	@classmethod
+	def setUpClass(cls):
+		{% if request_method == 'GET' %}r = requests.get(url){% endif %}{% if request_method == 'POST' %}r = requests.post(url=url, json=req_json){% endif %}	    
+		cls.status = r.status_code
+		cls.header = r.headers
+		cls.json = r.json()
+		super(HTTPTest, cls).setUpClass()
+
+	@classmethod
+	def tearDownClass(self):
+		pass
+
+	def testStatus(self):
+		status = self.status
+		expected_status = {{ response_status }}
+		self.assertEqual(status, expected_status)
+
+	def testEncoding(self):
+		encoding = self.header['Content-Type'].split(';')[1]
+		expected_encoding = "{{ response_encoding }}"
+		self.assertIsNotNone(encoding)
+		self.assertIn(expected_encoding.lower(), encoding.lower())
+
+	def testContentType(self):
+		content_type = self.header['Content-Type'].split(';')[0]
+		expected_contenttype = "{{ response_content_type }}"
+		self.assertIsNotNone(content_type)
+		self.assertIn(expected_contenttype, content_type.lower())
+
+	def testResponseJson(self):
+		response_json = self.json
+		expected_jsonschema = json.load(open(__file__[:-2:] + "schema.json"))
+		valid = False
+		try:
+			validate(response_json, expected_jsonschema)
+			valid = True
+		except Exception as e:
+			print "invalid :\n\t{0}".format(str(e))
+		self.assertTrue(valid)
+
+
+
+
+if __name__ == '__main__':
+	unittest.main()
 
