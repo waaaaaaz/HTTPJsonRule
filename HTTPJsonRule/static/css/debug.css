@@ -1,0 +1,30 @@
+body {
+  padding-top: 60px; 
+}
+
+#allparameters, #allheaders, #authentication {
+  display: none;
+}
+
+#ajaxspinner {
+  display: none;
+}
+
+#urlvalue {
+	width: 420px;
+}
+
+#headerpre {
+  min-height: 200px;
+  /* font-size: 85%; */
+}
+
+#outputpre {
+  min-height: 300px;
+  /* font-size: 85%; */
+}
+
+#jsonvalue {
+  min-height: 270px;
+  width: 520px;
+}
